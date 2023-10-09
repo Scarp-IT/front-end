@@ -14,13 +14,14 @@
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
     #menu{
         display: flex;
         width: 70vw;
         height: 60px;
         border-bottom: 1px solid #ADA4CD;
         justify-content: space-between;
+        z-index: 10;
     }
 
     #btn-wiki{

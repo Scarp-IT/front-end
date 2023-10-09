@@ -10,7 +10,16 @@
             </div>
         </div>
         <img id="bg" src="./assets/BGsvg.svg" alt="">
-        <div id="servicos"></div>
+        <div id="servicos">
+            <div id="frase-animada">
+                <FraseAnimada></FraseAnimada>
+            </div>
+            <div id="botoes-servicos" style="padding-top: 4rem;">
+                <BotaoServico :img="imgSre" titulo="SRE"></BotaoServico>
+                <BotaoServico :img="imgNuvem" titulo="Nuvem"></BotaoServico>
+                <BotaoServico :img="imgApm" titulo="APM"></BotaoServico>
+            </div>
+        </div>
         <div id="scarpidia"></div>
         <div id="contato"></div>
     </main>
@@ -18,6 +27,13 @@
 
 <script setup lang="ts">
     import Menu from "./components/Menu.vue";
+    import BotaoServico from "./components/BotaoServico.vue";
+    import FraseAnimada from "./components/FraseAnimada.vue"
+
+    import imgSre from './assets/sre.png';
+    import imgNuvem from './assets/nuvem.png';
+    import imgApm from './assets/apm.png';
+
 </script>
 
 <style lang="scss" scoped>
@@ -97,7 +113,22 @@
         left: 50%;
         transform: translate(-50%, -50%);
         filter: blur(0.5px);
-        z-index: 9;
+        z-index: 1;
+    }
+
+    #servicos{
+        display: flex;
+        position: relative;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        z-index: 10;
+
+        #botoes-servicos{
+            display: flex;
+            width: 70%;
+            justify-content: space-between;
+        }
     }
     
 
