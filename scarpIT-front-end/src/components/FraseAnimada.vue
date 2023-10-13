@@ -13,7 +13,7 @@
     const frase3 = 'você otimiza a eficiência operacional, proporcionando um APM de alto desempenho...';
     const frase4 = 'você está sempre um passo à frente em termos de gerenciamento de nuvem e SRE...';
     const frase = ref([frase1, frase2, frase3, frase4]);
-    const animado = ref(null);
+    const animado = ref();
 
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach((entry) => {

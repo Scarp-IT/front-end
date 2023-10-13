@@ -1,7 +1,7 @@
 <template>
     <div id="menu">
         <h3 style="font-family: 'Jet Brains';">Scarp.IT</h3>
-        <div id="btn-wiki" :onclick="clickBtnWiki">
+        <div id="btn-wiki" @click="clickBtnWiki">
             <h2 style="font-family: 'Jet Brains'; margin: 0;">Wiki</h2>
         </div>
     </div>
