@@ -34,7 +34,7 @@
                 <h1>ScarPidia</h1>
             </div>
             <div id="scarpidia-grid">
-                <div id="principal">
+                <div id="principal" @click="">
                     <div class="img-principal">
                         <img src="./assets/vuebg.png" alt="">
                     </div>
@@ -42,14 +42,60 @@
                     <p>Veja como é fácil criar uma aplicação simples com o VUE3.</p>
                 </div>
                 <div id="svg-divisao">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="434" viewBox="0 0 12 434" fill="none">
-                        <path d="M6 0.666667C3.05448 0.666666 0.666667 3.05448 0.666667 6C0.666666 8.94552 3.05448 11.3333 6 11.3333C8.94552 11.3333 11.3333 8.94552 11.3333 6C11.3333 3.05448 8.94552 0.666667 6 0.666667ZM5 6L4.99998 434L6.99998 434L7 6L5 6Z" fill="white" fill-opacity="0.3"/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="100%" viewBox="0 0 12 549" fill="none">
+                    <path d="M6 0.666667C3.05448 0.666667 0.666667 3.05448 0.666667 6C0.666667 8.94552 3.05448 11.3333 6 11.3333C8.94552 11.3333 11.3333 8.94552 11.3333 6C11.3333 3.05448 8.94552 0.666667 6 0.666667ZM5 6L5 594H7L7 6H5Z" fill="white" fill-opacity="0.3"/>
                     </svg>
                 </div>
-                <div id="secundaria"></div>
+                <div id="secundaria">
+                    <div id="um" @click="">
+                        <img src="./assets/vuebg.png" alt=""/>
+                        <div>
+                            <h2>Primeira aplicação em VUE3</h2>
+                            <p>Veja como é fácil criar uma aplicação simples com o VUE3.</p>
+                        </div>
+                    </div>
+                    <div id="dois" @click="">
+                        <img src="./assets/vuebg.png" alt=""/>
+                        <div>
+                            <h2>Primeira aplicação em VUE3</h2>
+                            <p>Veja como é fácil criar uma aplicação simples com o VUE3.</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="botao-up" @click="clickBtnScroll('home')">
+                    <div id="">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" viewBox="0 0 38 35" fill="none">
+                        <path d="M20.7678 1.23199C19.7915 0.25568 18.2085 0.25568 17.2322 1.23199L1.32233 17.1419C0.346019 18.1182 0.346019 19.7011 1.32233 20.6774C2.29864 21.6537 3.88155 21.6537 4.85786 20.6774L19 6.53529L33.1421 20.6774C34.1184 21.6537 35.7014 21.6537 36.6777 20.6774C37.654 19.7011 37.654 18.1182 36.6777 17.1419L20.7678 1.23199ZM21.5 35L21.5 2.99976L16.5 2.99976L16.5 35L21.5 35Z" fill="white" fill-opacity="0.3"/>
+                        </svg>
+                        <span>UP</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="contato"></div>
+        <div id="contato">
+            <div id="formulario">
+                <h1>Sua aplicação 24/7.</h1>
+                <p>Deixe-nos ajudar você a alcançar e manter um ambiente altamente disponível e robusto. Se você escapar para as montanhas e sem sinal, estaremos aqui, cuidando para que tudo funcione perfeitamente.</p>
+                <div id="inputs">
+                    <input type="text" placeholder="Nome">
+                    <input type="text" placeholder="Email">
+                    <textarea name="assunto" id="txa-assunt" cols="auto" rows="4" placeholder="Assunto"></textarea>
+                    <button>Enviar ✈️</button>
+                </div>
+            </div>
+            <div id="info">
+                <h1>Info</h1>
+                <div id="email">
+                    <img src="./assets/iconEmail.svg" alt="">
+                </div>
+                <div id="phone">
+                    <img src="./assets/iconPhone.svg" alt="">
+                </div>
+                <div id="social">
+
+                </div>
+            </div>
+        </div>
     </main>
 </template>
 
@@ -68,6 +114,14 @@
     const servicoFrase = ref('');
     const servicoImg = ref(imgNuvem);
 
+    function clickBtnBlk(url: string){
+        window.open(url, '_blank');
+    }
+
+    function clickBtnScroll(url: string){
+        //@ts-expect-error
+        document.getElementById(url).scrollIntoView({ behavior: 'smooth' });
+    }
 
     function mudarServico(tipo: string){
         switch(tipo){
@@ -223,8 +277,9 @@
         align-items: center;
         flex-direction: column;
         width: 100vw;
-        height: 80vh;
+        height: 100%;
         font-family: 'Jet Brains-Bold';
+        padding-bottom: 8rem;
 
         #scarpidia-titulo{
             width: 70%;
@@ -241,6 +296,7 @@
             height: 80%;
             display: flex;
             justify-content: center;
+            position: relative;
 
             > div{
                 width: 35%;
@@ -251,22 +307,25 @@
                 flex-direction: column;
                 align-items: center;
                 height: 100%;
-                padding-right: 5rem;
+                padding-right: 3vw;
                 padding-top: 4rem;
                 text-align: initial;
 
                 > *{
                     width: 100%;
                     margin: 0;
+                    cursor: pointer;
                 }
 
                 .img-principal{
+                    display: flex;
                     height: 60%;
                     border-radius: 5px;
                     overflow: hidden;
 
                     img{
                         width: 100%;
+                        object-fit: cover;
                     }
                 }
 
@@ -277,8 +336,44 @@
 
             #secundaria{
                 height: 100%;
-                padding-left: 5rem;
+                padding-left: 3vw;
                 padding-top: 4rem;
+                display: flex;
+                flex-direction: column;
+                gap: 2.5rem;
+
+                > div{
+                    height: 40%;
+                    display: flex;
+                    gap: 1rem;
+                    cursor: pointer;
+                    
+                    :nth-child(1){
+                        width: 40%;
+                        border-radius: 5px;
+                        object-fit: cover;
+                    }
+
+                    :nth-child(2){
+                        width: 60%;
+                        text-align: initial;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 1rem;
+                        
+                        > *{
+                            width: 100%;
+                            margin: 0;
+                        } 
+
+                        p{
+                            font-size: 0.9rem;
+                        }
+
+                    }
+
+
+                }
             }
 
             #svg-divisao{
@@ -287,12 +382,93 @@
                 svg{
                     position: absolute;
                     top: 3.5rem;
+                    left: -.3rem;
                 }
             }
 
-            
+            #botao-up{
+                display: flex;
+                position: absolute;
+                width: 10%;
+                aspect-ratio: 4/1.7;
+                top: calc(100% + 3.5rem);
+                border: 1px solid #ADA4CD;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+
+                span{
+                    opacity: .3;
+                    font-weight: 900;
+                }
+            }
         }
 
+    }
+
+    #contato{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100%;
+        font-family: 'Jet Brains-Bold';
+        padding-bottom: 9rem;
+
+        > div{
+            width: 35%;
+        }
+
+        #formulario{
+            text-align: initial;
+            padding-right: 3vw;
+
+            h1{
+                font-size: 2.5rem;
+            }
+
+            input, textarea{
+                background-color: transparent;
+                width: 100%;
+                border: none;
+                border-bottom: 3px solid rgba(255, 255, 255, 0.30);
+                font-size: 1.3rem;
+                outline: none;
+                padding-top: 1.5rem;
+                padding-bottom: 0.3rem;
+                resize: none;
+            }
+
+            input::placeholder, textarea::placeholder{
+                color: rgba(255, 255, 255, 0.30);
+                font-family: 'Jet Brains';
+            }
+
+            button{
+                width: 100%;
+                aspect-ratio: 10/1;
+                border-radius: 5px;
+                background: rgba(0, 0, 0, 0.40);
+                margin-top: 1rem;
+                outline: none;
+
+            }
+            
+            button:hover{
+                border: none;
+            }
+        }
+
+        #info{
+            padding-left: 3vw;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            #social{
+                position: absolute;
+            }
+        }
     }
     
 
