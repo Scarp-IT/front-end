@@ -87,13 +87,20 @@
                 <h1>Info</h1>
                 <div id="email">
                     <img src="./assets/iconEmail.svg" alt="">
+                    <p>contato@scarpIT.com</p>
                 </div>
                 <div id="phone">
                     <img src="./assets/iconPhone.svg" alt="">
+                    <p>+55 13 98716-3590</p>
                 </div>
                 <div id="social">
-
+                    <img src="./assets/Insta.svg" alt="">
+                    <img src="./assets/Linkedin.svg" alt="">
+                    <img src="./assets/Github.svg" alt="">
                 </div>
+            </div>
+            <div id="bg-down">
+                <img src="./assets/BGsvgDown.svg" alt="">
             </div>
         </div>
     </main>
@@ -114,6 +121,7 @@
     const servicoFrase = ref('');
     const servicoImg = ref(imgNuvem);
 
+    //@ts-expect-error
     function clickBtnBlk(url: string){
         window.open(url, '_blank');
     }
@@ -414,14 +422,16 @@
         height: 100%;
         font-family: 'Jet Brains-Bold';
         padding-bottom: 9rem;
+        overflow: hidden;
 
-        > div{
+        > div:not(#bg-down){
             width: 35%;
         }
 
         #formulario{
             text-align: initial;
             padding-right: 3vw;
+            z-index: 10;
 
             h1{
                 font-size: 2.5rem;
@@ -460,16 +470,52 @@
         }
 
         #info{
-            padding-left: 3vw;
+            margin-left: 3vw;
             display: flex;
             flex-direction: column;
             position: relative;
+            justify-content: center;
+            background-color: rgba(0, 0, 0, 0.30);
+            backdrop-filter: blur(16.5px);
+            gap: 1rem;
+            z-index: 10;
+            padding: 4rem 0;
+
+            > *{
+                padding-left: 5rem;
+            }
+
+            h1{
+                text-align: initial;
+                margin: 0 0 2rem 0;
+            }
+
+            > div{
+                display: flex;
+                gap: 20px;
+            }
 
             #social{
                 position: absolute;
+                display: flex;
+                flex-direction: column;
+                align-self: flex-end;
+                padding-right: 4rem;
             }
         }
     }
-    
+
+    #bg-down{
+        position: relative;
+        z-index: 1;
+        filter: blur(1px);
+        img{
+            position: absolute;
+            opacity: 50%;
+            height: 70vh;
+            left: -50vw;
+            top: -5vh;
+        }
+    }
 
 </style>
