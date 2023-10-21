@@ -34,12 +34,12 @@
                 <h1>ScarPidia</h1>
             </div>
             <div id="scarpidia-grid">
-                <div id="principal" @click="">
+                <div id="principal" @click="clickBtnBlk('https://www.scarpit.tech/wiki/performance/democratiza%C3%A7%C3%A3o')">
                     <div class="img-principal">
-                        <img src="./assets/vuebg.png" alt="">
+                        <img src="./assets/jmeter.webp" alt="">
                     </div>
-                    <h2>Primeira aplicação em VUE3</h2>
-                    <p>Veja como é fácil criar uma aplicação simples com o VUE3.</p>
+                    <h2><strong>JMeter</strong></h2>
+                    <p>Potencialize o desempenho da sua aplicação com insights precisos. Descubra como com nosso guia sobre JMeter.</p>
                 </div>
                 <div id="svg-divisao">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="100%" viewBox="0 0 12 549" fill="none">
@@ -47,18 +47,18 @@
                     </svg>
                 </div>
                 <div id="secundaria">
-                    <div id="um" @click="">
-                        <img src="./assets/vuebg.png" alt=""/>
+                    <div id="um" @click="clickBtnBlk('https://www.scarpit.tech/wiki/cyber-security')">
+                        <img src="./assets/cybersecurity.jpeg" alt=""/>
                         <div>
-                            <h2>Primeira aplicação em VUE3</h2>
-                            <p>Veja como é fácil criar uma aplicação simples com o VUE3.</p>
+                            <h2><strong>Cyber Security</strong></h2>
+                            <p>Preocupado sobre sua segurança cibernéticas? Nosso documento sobre segurança cibernética é essencial para sua defesa online.</p>
                         </div>
                     </div>
-                    <div id="dois" @click="">
-                        <img src="./assets/vuebg.png" alt=""/>
+                    <div id="dois" @click="clickBtnBlk('https://www.scarpit.tech/wiki/observabilidade')">
+                        <img src="./assets/observabilidade.png" alt=""/>
                         <div>
-                            <h2>Primeira aplicação em VUE3</h2>
-                            <p>Veja como é fácil criar uma aplicação simples com o VUE3.</p>
+                            <h2>Observabilidade</h2>
+                            <p>Descubra um novo horizonte de insights... <br/>Explore nosso documento sobre Observabilidade agora!</p>
                         </div>
                     </div>
                 </div>
@@ -73,30 +73,33 @@
             </div>
         </div>
         <div id="contato">
-            <div id="formulario">
+            <div id="formulario" v-if="!emailEnviado">
                 <h1>Sua aplicação 24/7.</h1>
                 <p>Deixe-nos ajudar você a alcançar e manter um ambiente altamente disponível e robusto. Se você escapar para as montanhas e sem sinal, estaremos aqui, cuidando para que tudo funcione perfeitamente.</p>
                 <div id="inputs">
-                    <input type="text" placeholder="Nome">
-                    <input type="text" placeholder="Email">
-                    <textarea name="assunto" id="txa-assunt" cols="auto" rows="4" placeholder="Assunto"></textarea>
-                    <button>Enviar ✈️</button>
+                    <input type="text" placeholder="Nome" v-model="objFormulario.Nome">
+                    <input type="text" placeholder="Email" v-model="objFormulario.Email">
+                    <textarea name="assunto" id="txa-assunt" v-model="objFormulario.Assunto" cols="auto" rows="4" placeholder="Assunto"></textarea>
+                    <button @click="enviarForm()">Enviar ✈️</button>
                 </div>
+            </div>
+            <div id="enviado" v-if="emailEnviado">
+
             </div>
             <div id="info">
                 <h1>Info</h1>
                 <div id="email">
-                    <img src="./assets/iconEmail.svg" alt="">
+                    <img src="./assets/iconEmail.svg" alt="iconMail" @click="clickBtnBlk('mailto:scarpit@scarpit.tech')">
                     <p>contato@scarpIT.com</p>
                 </div>
                 <div id="phone">
-                    <img src="./assets/iconPhone.svg" alt="">
+                    <img src="./assets/iconPhone.svg" alt="iconePhone" @click="clickBtnBlk('tel:+5513991486248')">
                     <p>+55 13 98716-3590</p>
                 </div>
                 <div id="social">
-                    <img src="./assets/Insta.svg" alt="">
-                    <img src="./assets/Linkedin.svg" alt="">
-                    <img src="./assets/Github.svg" alt="">
+                    <img src="./assets/Insta.svg" alt="instagram" @click="clickBtnBlk('https://www.instagram.com/scarpit.tech/')">
+                    <img src="./assets/Linkedin.svg" alt="linkedin" @click="clickBtnBlk('https://www.linkedin.com/company/scarp-it-technology-consulting/')">
+                    <img src="./assets/Github.svg" alt="github" @click="clickBtnBlk('https://github.com/Scarp-IT')">
                 </div>
             </div>
             <div id="bg-down">
@@ -107,29 +110,42 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue';
-
+    import { reactive, ref, onMounted } from 'vue';
+    //@ts-expect-error
+    import service from './service/service';
+    
     import Menu from "./components/Menu.vue";
     import BotaoServico from "./components/BotaoServico.vue";
-    import FraseAnimada from "./components/FraseAnimada.vue"
+    import FraseAnimada from "./components/FraseAnimada.vue";
 
-    import imgSre from './assets/sre.png';
-    import imgNuvem from './assets/nuvem.png';
-    import imgApm from './assets/apm.png';
+    // import imgSre from './assets/sre.png';
+    // import imgNuvem from './assets/nuvem.png';
+    // import imgApm from './assets/apm.png';
+
+    const imgSre = 'src/assets/sre.png';
+    const imgNuvem = 'src/assets/nuvem.png';
+    const imgApm = 'src/assets/apm.png';
 
     const servicoTitulo = ref('');
     const servicoFrase = ref('');
     const servicoImg = ref(imgNuvem);
 
-    //@ts-expect-error
+    const emailEnviado = ref(false);
+
+    let objFormulario = reactive({Nome: '', Email: '', Assunto: ''});
+
+    onMounted(() => {
+
+    });
+
     function clickBtnBlk(url: string){
         window.open(url, '_blank');
-    }
+    };
 
     function clickBtnScroll(url: string){
         //@ts-expect-error
         document.getElementById(url).scrollIntoView({ behavior: 'smooth' });
-    }
+    };
 
     function mudarServico(tipo: string){
         switch(tipo){
@@ -157,7 +173,11 @@
                     break;
                 };
         }
-    }
+    };
+
+    async function enviarForm() {
+        
+    };
 
 </script>
 
@@ -288,6 +308,10 @@
         height: 100%;
         font-family: 'Jet Brains-Bold';
         padding-bottom: 8rem;
+
+        img {
+            opacity: 0.9;
+        }
 
         #scarpidia-titulo{
             width: 70%;
@@ -493,6 +517,10 @@
             > div{
                 display: flex;
                 gap: 20px;
+
+                img{
+                    cursor: pointer;
+                }
             }
 
             #social{
