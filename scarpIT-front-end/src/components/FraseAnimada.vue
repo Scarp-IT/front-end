@@ -64,12 +64,30 @@
             letter-spacing: 0; /* Adjust as needed */
             text-transform: uppercase;
         }
+
+        @media screen and (max-width: 1024px) {
+            h1{
+                font-size: 1.7rem;
+            }
+
+            p{
+                font-size: .8rem;
+                white-space: initial;
+                padding: 20px 50px;
+                border-right: none;
+            }
+        }
     }
 
     .animated{
         animation: 
         typing 3.5s steps(40, end),
         blink-caret .5s step-end infinite;
+
+        @media screen and (max-width: 1024px){
+                -webkit-animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+                animation: puff-in-center 0.7s cubic-bezier(0.470, 0.000, 0.745, 0.715) both;
+        }
     }
 
     /* The typing effect */
@@ -83,4 +101,40 @@
         from, to { border-color: transparent }
         50% { border-color: #8365F4 }
     }
+
+
+    @-webkit-keyframes puff-in-center {
+        0% {
+            -webkit-transform: scale(2);
+                    transform: scale(2);
+            -webkit-filter: blur(4px);
+                    filter: blur(4px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            -webkit-filter: blur(0px);
+                    filter: blur(0px);
+            opacity: 1;
+        }
+        }
+        @keyframes puff-in-center {
+        0% {
+            -webkit-transform: scale(2);
+                    transform: scale(2);
+            -webkit-filter: blur(4px);
+                    filter: blur(4px);
+            opacity: 0;
+        }
+        100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            -webkit-filter: blur(0px);
+                    filter: blur(0px);
+            opacity: 1;
+        }
+    }
+
+
 </style>

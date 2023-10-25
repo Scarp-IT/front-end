@@ -9,7 +9,9 @@
                 <img src="./assets/easterEgg.svg" alt="">
             </div>
         </div>
-        <img id="bg" src="./assets/BGsvg.svg" alt="">
+        <div id="bg">
+            <img src="./assets/BGsvg.svg" alt="">
+        </div>
         <div id="servicos">
             <div id="frase-animada">
                 <FraseAnimada></FraseAnimada>
@@ -19,9 +21,9 @@
                 <BotaoServico :img="imgNuvem" titulo="Nuvem" @click="mudarServico('nuvem')"></BotaoServico>
                 <BotaoServico :img="imgApm" titulo="APM" @click="mudarServico('apm')"></BotaoServico>
             </div>
-            <div id="servico-descricao">
+            <div ref="servicoDescricao" id="servico-descricao">
                 <div id="servico-img">
-                    <img :src="servicoImg" alt="" style="opacity: 0.4;">
+                    <img :src="servicoImg" alt="" >
                 </div>
                 <div id="servico-info" style="text-align: initial;">
                     <h1>{{ servicoTitulo }}</h1>
@@ -132,6 +134,9 @@
 
     const emailEnviado = ref(false);
 
+    const servicoDescricao = ref();
+    const onServicoDescricao = ref(false);
+
     let objFormulario = reactive({Nome: '', Email: '', Assunto: ''});
 
     onMounted(() => {
@@ -148,6 +153,10 @@
     };
 
     function mudarServico(tipo: string){
+        onServicoDescricao.value = true;
+        servicoDescricao.value.classList.remove('scale-in-top');
+        servicoDescricao.value.classList.add('scale-in-top');
+
         switch(tipo){
             case 'sre':
                 {
@@ -198,6 +207,7 @@
         width: 100vw;
         height: 100%;
         background: linear-gradient(180deg, #1B0073 5.73%, #8365F4 100%);
+        overflow: hidden;
     }
     main > div{
         width: 100%;
@@ -223,19 +233,26 @@
         
         *{
             position: absolute;
-            font-size: 140px;
+            font-size: 10rem;
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
             color: #fff;
+
+            @media screen and (max-width: 1024px) {
+                font-size: 15vw;
+            }
         }
 
         p{
             font-family: 'Jet Brains';
-            font-size: 36px;
-            top: 62%;
+            font-size: 30px;
+            top: 70vh;
             left: 50%;
             transform: translate(-50%, -50%);
+            @media screen and (max-width: 1024px) {
+                top: 60vh;
+            }
         }
 
         img{
@@ -246,13 +263,25 @@
     }
 
     #bg{
-        position: absolute;
+        position: relative;
         width: 100vw;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        filter: blur(0.5px);
-        z-index: 1;
+        height: 0;
+
+        img{
+            position: absolute;
+            width: 110vw;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            filter: blur(0.5px);
+            z-index: 1;
+
+            @media screen and (max-width: 1024px) {
+                width: 150%;
+                top: -200px;
+            }
+        }
+
     }
 
     #servicos{
@@ -267,6 +296,7 @@
             display: flex;
             width: 70%;
             justify-content: space-between;
+            gap: 20px;
         }
     }
 
@@ -274,12 +304,26 @@
         display: flex;
         width: 70vw;
 
+        @media screen and (max-width: 1024px) {
+            flex-direction: column;       
+
+            :first-child > img{
+                position: absolute;
+                top: 80%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                opacity: 0.3;
+                width: 100%;
+            }
+        }
+
         > div {
             flex: 1 1 50%;
         }
 
         img{
             width: 130%;
+            opacity: 0.4;
         }
 
         #servico-info{
@@ -297,6 +341,16 @@
             p {
                 font-size: 1.1rem;
             };
+
+            @media screen and (max-width: 1024px) {
+                h1{
+                    font-size: 4rem;
+                }
+
+                p{
+                    font-size: 0.8rem;
+                }
+            }
         }
     }
 
@@ -494,19 +548,26 @@
         }
 
         #info{
-            margin-left: 3vw;
+            margin: 0 3vw;
             display: flex;
             flex-direction: column;
             position: relative;
             justify-content: center;
             background-color: rgba(0, 0, 0, 0.30);
             backdrop-filter: blur(16.5px);
+            -webkit-backdrop-filter: blur(16.5px);
+
             gap: 1rem;
             z-index: 10;
             padding: 4rem 0;
 
             > *{
-                padding-left: 5rem;
+                padding: 0 5rem;
+
+                p{
+                    overflow-wrap: anywhere;
+                    text-align: initial;
+                }
             }
 
             h1{
@@ -528,7 +589,7 @@
                 display: flex;
                 flex-direction: column;
                 align-self: flex-end;
-                padding-right: 4rem;
+                right: -150px;
             }
         }
     }
@@ -545,5 +606,43 @@
             top: -5vh;
         }
     }
+
+    .scale-in-top {
+	-webkit-animation: scale-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: scale-in-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+    }
+    @-webkit-keyframes scale-in-top {
+        0% {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+            -webkit-transform-origin: 50% 0%;
+                    transform-origin: 50% 0%;
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            -webkit-transform-origin: 50% 0%;
+                    transform-origin: 50% 0%;
+            opacity: 1;
+        }
+        }
+        @keyframes scale-in-top {
+        0% {
+            -webkit-transform: scale(0);
+                    transform: scale(0);
+            -webkit-transform-origin: 50% 0%;
+                    transform-origin: 50% 0%;
+            opacity: 1;
+        }
+        100% {
+            -webkit-transform: scale(1);
+                    transform: scale(1);
+            -webkit-transform-origin: 50% 0%;
+                    transform-origin: 50% 0%;
+            opacity: 1;
+        }
+    }
+
 
 </style>
