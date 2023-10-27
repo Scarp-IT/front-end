@@ -75,18 +75,15 @@
             </div>
         </div>
         <div id="contato">
-            <div id="formulario" v-if="!emailEnviado">
+            <div id="formulario">
                 <h1>Sua aplicação 24/7.</h1>
                 <p>Deixe-nos ajudar você a alcançar e manter um ambiente altamente disponível e robusto. Se você escapar para as montanhas e sem sinal, estaremos aqui, cuidando para que tudo funcione perfeitamente.</p>
-                <div id="inputs">
+                <!-- <div id="inputs">
                     <input type="text" placeholder="Nome" v-model="objFormulario.Nome">
                     <input type="text" placeholder="Email" v-model="objFormulario.Email">
                     <textarea name="assunto" id="txa-assunt" v-model="objFormulario.Assunto" cols="auto" rows="4" placeholder="Assunto"></textarea>
                     <button @click="enviarForm()">Enviar ✈️</button>
-                </div>
-            </div>
-            <div id="enviado" v-if="emailEnviado">
-
+                </div> -->
             </div>
             <div id="info">
                 <h1>Info</h1>
@@ -502,8 +499,16 @@
         padding-bottom: 9rem;
         overflow: hidden;
 
+        
         > div:not(#bg-down){
             width: 35%;
+        }
+        
+        @media screen and (max-width: 1024px){
+            flex-direction: column;
+            > div:not(#bg-down){
+                width: 60%;
+            }
         }
 
         #formulario{
@@ -553,6 +558,8 @@
             flex-direction: column;
             position: relative;
             justify-content: center;
+            border-radius: 5px;
+            margin-top: 3%;
             background-color: rgba(0, 0, 0, 0.30);
             backdrop-filter: blur(16.5px);
             -webkit-backdrop-filter: blur(16.5px);
@@ -563,6 +570,10 @@
 
             > *{
                 padding: 0 5rem;
+                
+                @media screen and (max-width: 1024px){
+                    padding: 0 3rem;
+                }
 
                 p{
                     overflow-wrap: anywhere;
