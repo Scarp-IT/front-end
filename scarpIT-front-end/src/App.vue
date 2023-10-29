@@ -67,7 +67,7 @@
                 <div id="botao-up" @click="clickBtnScroll('home')">
                     <div id="">
                         <svg xmlns="http://www.w3.org/2000/svg" width="38" height="35" viewBox="0 0 38 35" fill="none">
-                        <path d="M20.7678 1.23199C19.7915 0.25568 18.2085 0.25568 17.2322 1.23199L1.32233 17.1419C0.346019 18.1182 0.346019 19.7011 1.32233 20.6774C2.29864 21.6537 3.88155 21.6537 4.85786 20.6774L19 6.53529L33.1421 20.6774C34.1184 21.6537 35.7014 21.6537 36.6777 20.6774C37.654 19.7011 37.654 18.1182 36.6777 17.1419L20.7678 1.23199ZM21.5 35L21.5 2.99976L16.5 2.99976L16.5 35L21.5 35Z" fill="white" fill-opacity="0.3"/>
+                            <path d="M20.7678 1.23199C19.7915 0.25568 18.2085 0.25568 17.2322 1.23199L1.32233 17.1419C0.346019 18.1182 0.346019 19.7011 1.32233 20.6774C2.29864 21.6537 3.88155 21.6537 4.85786 20.6774L19 6.53529L33.1421 20.6774C34.1184 21.6537 35.7014 21.6537 36.6777 20.6774C37.654 19.7011 37.654 18.1182 36.6777 17.1419L20.7678 1.23199ZM21.5 35L21.5 2.99976L16.5 2.99976L16.5 35L21.5 35Z" fill="white" fill-opacity="0.3"/>
                         </svg>
                         <span>UP</span>
                     </div>
@@ -109,7 +109,7 @@
 </template>
 
 <script setup lang="ts">
-    import { reactive, ref, onMounted } from 'vue';
+    import { ref, onMounted } from 'vue';
     //@ts-expect-error
     import service from './service/service';
     
@@ -127,14 +127,14 @@
 
     const servicoTitulo = ref('');
     const servicoFrase = ref('');
-    const servicoImg = ref(imgNuvem);
+    const servicoImg = ref();
 
-    const emailEnviado = ref(false);
+    // const emailEnviado = ref(false);
 
     const servicoDescricao = ref();
     const onServicoDescricao = ref(false);
 
-    let objFormulario = reactive({Nome: '', Email: '', Assunto: ''});
+    // let objFormulario = reactive({Nome: '', Email: '', Assunto: ''});
 
     onMounted(() => {
 
@@ -181,9 +181,7 @@
         }
     };
 
-    async function enviarForm() {
-        
-    };
+    // async function enviarForm() {};
 
 </script>
 
@@ -329,6 +327,7 @@
             justify-content: center;
             z-index: 12;
             font-family: 'Jet Brains-Bold';
+            opacity: .8;
 
             h1{
                 font-size: 6rem;
@@ -364,6 +363,10 @@
             opacity: 0.9;
         }
 
+        @media screen and (max-width: 1024px) {
+            padding-top: 10vh;
+        }
+
         #scarpidia-titulo{
             width: 70%;
             height: 20%;
@@ -371,6 +374,10 @@
 
             h1{
                 margin: 0;
+            }
+
+            @media screen and (max-width: 1024px) {
+                font-size: 4vw;
             }
         }
 
@@ -485,6 +492,38 @@
                     font-weight: 900;
                 }
             }
+
+            @media screen and (max-width: 1024px) {
+                flex-direction: column;
+                align-items: center;
+
+                > div:not(#botao-up){
+                    width: 70%;
+                    padding: 3vh 0 !important;
+                }
+                #svg-divisao{
+                    display: none;
+                }
+                #botao-up{
+                    padding: 1rem;
+                    top: calc(100% + 1rem);
+                }
+                #principal{
+                    p{
+                        font-size: 2.8vw;
+                    }
+                }
+                #secundaria{
+                    height: 50vh;
+                    h2{
+                        font-size: 4vw;
+                    }
+                    p {
+                        font-size: min(2.4vw, 1rem) !important;
+                    }
+
+                }
+            }
         }
 
     }
@@ -506,6 +545,7 @@
         
         @media screen and (max-width: 1024px){
             flex-direction: column;
+            padding-top: 10vh;
             > div:not(#bg-down){
                 width: 60%;
             }
@@ -518,6 +558,10 @@
 
             h1{
                 font-size: 2.5rem;
+            }
+
+            @media screen and (max-width:1024px) {
+                padding: 0;
             }
 
             input, textarea{
@@ -570,10 +614,6 @@
 
             > *{
                 padding: 0 5rem;
-                
-                @media screen and (max-width: 1024px){
-                    padding: 0 3rem;
-                }
 
                 p{
                     overflow-wrap: anywhere;
@@ -602,6 +642,29 @@
                 align-self: flex-end;
                 right: -150px;
             }
+
+            @media screen and (max-width:1024px) {
+                padding: 9vw 0;
+                > *:not(#social){
+                    padding: 0 9vw;
+                }
+                
+                h1{
+                    font-size: min(10vw, 3rem);
+                }
+
+                > div:not(#social){
+                    flex-direction: column;
+                    gap: 0;
+                    :first-child{
+                        height: 20px;
+                        align-self: flex-start;
+                    }
+                    p{
+                        font-size: min(3.4vw ,1.3rem);
+                    }
+                }
+            }
         }
     }
 
@@ -615,6 +678,12 @@
             height: 70vh;
             left: -50vw;
             top: -5vh;
+        }
+
+        @media screen and (max-width:1024px) {
+            img{
+                top: -36vh;
+            }
         }
     }
 
