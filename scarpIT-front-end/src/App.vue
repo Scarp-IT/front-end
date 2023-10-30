@@ -121,9 +121,9 @@
     // import imgNuvem from './assets/nuvem.png';
     // import imgApm from './assets/apm.png';
 
-    const imgSre = 'src/assets/sre.png';
-    const imgNuvem = 'src/assets/nuvem.png';
-    const imgApm = 'src/assets/apm.png';
+    const imgSre = '/assets/sre.png';
+    const imgNuvem = '/assets/nuvem.png';
+    const imgApm = '/assets/apm.png';
 
     const servicoTitulo = ref('');
     const servicoFrase = ref('');
