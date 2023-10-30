@@ -5,7 +5,7 @@
             <div id="frase">
                 <h1>Scarp.IT</h1>
                 <h1>Scarp.IT</h1>
-                <p id="sub">Seus Guadiões Digitais ;)</p>
+                <p id="sub">Seus Guardiões Digitais ;)</p>
                 <img src="./assets/easterEgg.svg" alt="">
             </div>
         </div>
