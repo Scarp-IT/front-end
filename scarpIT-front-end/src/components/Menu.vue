@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
     function clickBtnWiki(){
-        window.open('https://www.scarpit.tech/wiki', '_blank');
+        window.open('http://wiki.scarpit.tech', '_blank');
     }
 </script>
 
