@@ -89,11 +89,11 @@
                 <h1>Info</h1>
                 <div id="email">
                     <img src="./assets/iconEmail.svg" alt="iconMail" @click="clickBtnBlk('mailto:scarpit@scarpit.tech')">
-                    <p>contato@scarpIT.com</p>
+                    <p>scarpit@scarpit.tech</p>
                 </div>
                 <div id="phone">
                     <img src="./assets/iconPhone.svg" alt="iconePhone" @click="clickBtnBlk('tel:+5513991486248')">
-                    <p>+55 13 98716-3590</p>
+                    <p>+55 13 99148-6248</p>
                 </div>
                 <div id="social">
                     <img src="./assets/Insta.svg" alt="instagram" @click="clickBtnBlk('https://www.instagram.com/scarpit.tech/')">
@@ -117,13 +117,13 @@
     import BotaoServico from "./components/BotaoServico.vue";
     import FraseAnimada from "./components/FraseAnimada.vue";
 
-    // import imgSre from './assets/sre.png';
-    // import imgNuvem from './assets/nuvem.png';
-    // import imgApm from './assets/apm.png';
+    import imgSre from './assets/sre.png';
+    import imgNuvem from './assets/nuvem.png';
+    import imgApm from './assets/apm.png';
 
-    const imgSre = '/assets/sre.png';
-    const imgNuvem = '/assets/nuvem.png';
-    const imgApm = '/assets/apm.png';
+    // const imgSre = '/assets/sre.png';
+    // const imgNuvem = '/assets/nuvem.png';
+    // const imgApm = '/assets/apm.png';
 
     const servicoTitulo = ref('');
     const servicoFrase = ref('');
