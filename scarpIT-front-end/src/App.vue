@@ -36,7 +36,7 @@
                 <h1>ScarPidia</h1>
             </div>
             <div id="scarpidia-grid">
-                <div id="principal" @click="clickBtnBlk('https://www.scarpit.tech/wiki/performance/democratiza%C3%A7%C3%A3o')">
+                <div id="principal" @click="clickBtnBlk('http://wiki.scarpit.tech/performance/democratiza%C3%A7%C3%A3o')">
                     <div class="img-principal">
                         <img src="./assets/jmeter.webp" alt="">
                     </div>
@@ -49,14 +49,14 @@
                     </svg>
                 </div>
                 <div id="secundaria">
-                    <div id="um" @click="clickBtnBlk('https://www.scarpit.tech/wiki/cyber-security')">
+                    <div id="um" @click="clickBtnBlk('http://wiki.scarpit.tech/cyber-security')">
                         <img src="./assets/cybersecurity.jpeg" alt=""/>
                         <div>
                             <h2><strong>Cyber Security</strong></h2>
                             <p>Preocupado sobre sua segurança cibernéticas? Nosso documento sobre segurança cibernética é essencial para sua defesa online.</p>
                         </div>
                     </div>
-                    <div id="dois" @click="clickBtnBlk('https://www.scarpit.tech/wiki/observabilidade')">
+                    <div id="dois" @click="clickBtnBlk('http://wiki.scarpit.tech/observabilidade')">
                         <img src="./assets/observabilidade.png" alt=""/>
                         <div>
                             <h2>Observabilidade</h2>
