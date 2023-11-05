@@ -1,8 +1,8 @@
 <template>
     <div id="menu">
-        <h3 style="font-family: 'Jet Brains';">Scarp.IT</h3>
+        <h6>Scarp.IT</h6>
         <div id="btn-wiki">
-            <h2 style="font-family: 'Jet Brains'; margin: 0;">Wiki</h2>
+            <h6 style="font-family: 'Jet Brains'; margin: 0;"> Esteira </h6>
         </div>
     </div>
 </template>
@@ -22,6 +22,7 @@
         border-bottom: 1px solid #ADA4CD;
         justify-content: space-between;
         z-index: 10;
+        font-size: 1.17em;
     }
 
     #btn-wiki{
@@ -30,6 +31,11 @@
         align-items: center;
         justify-content: center;
         border: 1px solid #ADA4CD;
-        cursor: pointer;
+        // cursor: pointer;
+    }
+
+    h6{
+        margin: 0;
+        align-self: center;
     }
 </style>
