@@ -23,6 +23,7 @@
         justify-content: space-between;
         z-index: 10;
         font-size: 1.17em;
+        justify-self: center;
     }
 
     #btn-wiki{
