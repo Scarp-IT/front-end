@@ -36,12 +36,12 @@
                 <h1>ScarPidia</h1>
             </div>
             <div id="scarpidia-grid">
-                <div id="principal" @click="clickBtnBlk('http://wiki.scarpit.tech/performance/democratiza%C3%A7%C3%A3o')">
+                <div id="principal" @click="clickBtnBlk('https://docs.google.com/document/d/1DGSZr3sQ9Ege1tOCHSA_Ap6u0mstvdNO2cMHC3yapPE/edit#heading=h.5qc7p8iu2u40')">
                     <div class="img-principal">
-                        <img src="./assets/jmeter.webp" alt="">
+                        <img src="./assets/apmw.png" alt="">
                     </div>
-                    <h2><strong>JMeter</strong></h2>
-                    <p>Potencialize o desempenho da sua aplicação com insights precisos. Descubra como com nosso guia sobre JMeter.</p>
+                    <h2><strong>O que é APM?</strong></h2>
+                    <p>Empresas que desejam que os clientes tenham uma experiência positiva dentro de suas aplicações utilizam de ferramentas de APM...</p>
                 </div>
                 <div id="svg-divisao">
                     <svg xmlns="http://www.w3.org/2000/svg" width="12" height="100%" viewBox="0 0 12 549" fill="none">
@@ -49,18 +49,18 @@
                     </svg>
                 </div>
                 <div id="secundaria">
-                    <div id="um" @click="clickBtnBlk('http://wiki.scarpit.tech/cyber-security')">
-                        <img src="./assets/cybersecurity.jpeg" alt=""/>
+                    <div id="um" @click="clickBtnBlk('https://drive.google.com/open?authuser=0&id=1rCQxr5QWq3yCEjclZV17kK-nMLIyc5XGNSH0PE-w3x0')">
+                        <img src="./assets/srew2.jpeg" alt=""/>
                         <div>
-                            <h2><strong>Cyber Security</strong></h2>
-                            <p>Preocupado sobre sua segurança cibernéticas? Nosso documento sobre segurança cibernética é essencial para sua defesa online.</p>
+                            <h2><strong>O que é SRE?</strong></h2>
+                            <p>Site Reliability Engineering (Engenharia de Confiabilidade de Site) é definido como a área de atuação de engenheiros e especialistas em software dedicados a monitorar, relatar e avaliar.</p>
                         </div>
                     </div>
-                    <div id="dois" @click="clickBtnBlk('http://wiki.scarpit.tech/observabilidade')">
-                        <img src="./assets/observabilidade.png" alt=""/>
+                    <div id="dois" @click="clickBtnBlk('https://docs.google.com/document/d/1g7bGs4nXlLAvhC0P2-hpstj1IRW7bOytv2n5OFRaWzM/edit')">
+                        <img src="./assets/ccw.jpeg" alt=""/>
                         <div>
-                            <h2>Observabilidade</h2>
-                            <p>Descubra um novo horizonte de insights... <br/>Explore nosso documento sobre Observabilidade agora!</p>
+                            <h2>O que é Cloud Computing?</h2>
+                            <p>Existe um amplo leque de finalidades para servidores em Cloud, como por exemplo, backup de dados, recuperação de desastres, e-mail, áreas de trabalho virtuais, desenvolvimento...</p>
                         </div>
                     </div>
                 </div>
